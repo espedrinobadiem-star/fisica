@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> | Simulador de Física</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- BARRA LATERAL -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">S</div>
+            <div>
+                <h2>Simulador de Caída Libre</h2>
+                <span>PRO EDITION</span>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <a href="#inicio" class="activo">⌂ Inicio</a>
+            <a href="#simulacion">◉ Simulación</a>
+            <a href="#energias">ϟ Energías</a>
+            <a href="#graficas">▥ Gráficas</a>
+            <a href="#datos">▤ Datos</a>
+            <a href="#resultados">✧ Resultados</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="online-dot"></span>
+            Simulador de Caída Libre
+            <p>Physics Lab v2.0</p>
+        </div>
+
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido">
+
+        <!-- ENCABEZADO -->
+        <header class="topbar" id="inicio">
+
+            <div>
+                <span class="etiqueta">LABORATORIO VIRTUAL / FÍSICA</span>
+                <h1>Simulador de <span>Caída Libre</span></h1>
+                <p>Experimenta, calcula y comprende el movimiento de los cuerpos.</p>
+            </div>
+
+            <div class="estado-sistema">
+                <span class="online-dot"></span>
+                <span id="estado">EN ESPERA</span>
+            </div>
+
+        </header>
+
+        <!-- INDICADORES -->
+        <section class="indicadores">
+
+            <article class="indicador">
+                <span>TIEMPO</span>
+                <h2 id="tiempo">0.00 <small>s</small></h2>
+                <p>Tiempo transcurrido</p>
+            </article>
+
+            <article class="indicador">
+                <span>VELOCIDAD</span>
+                <h2 id="velocidad">0.00 <small>m/s</small></h2>
+                <p>Velocidad instantánea</p>
+            </article>
+
+            <article class="indicador">
+                <span>ALTURA</span>
+                <h2 id="alturaActual">20.00 <small>m</small></h2>
+                <p>Altura sobre el suelo</p>
+            </article>
+
+            <article class="indicador">
+                <span>ACELERACIÓN</span>
+                <h2 id="aceleracion">9.80 <small>m/s²</small></h2>
+                <p>Aceleración instantánea</p>
+            </article>
+
+        </section>
+
+        <!-- SIMULACIÓN Y CONFIGURACIÓN -->
+        <section class="zona-principal" id="simulacion">
+
+            <div class="panel simulacion-panel">
+
+                <div class="panel-titulo">
+                    <div>
+                        <span class="etiqueta">EXPERIMENTO 001</span>
+                        <h2>Área de simulación</h2>
+                    </div>
+
+                    <span class="indicador-live">● LIVE</span>
+                </div>
+
+                <div class="escenario">
+
+                    <div class="altura-guia">
+                        <span id="alturaGuia">20 m</span>
+                        <div></div>
+                    </div>
+
+                    <div class="lineas-escenario"></div>
+
+                    <div class="pelota" id="pelota">
+                        <div class="brillo"></div>
+                    </div>
+
+                    <div class="suelo">
+                        <span>SUPERFICIE / NIVEL 0</span>
+                    </div>
+
+                </div>
+
+                <div class="controles">
+
+                    <button id="iniciar" class="btn-principal">
+                        ▶ Iniciar
+                    </button>
+
+                    <button id="pausar" class="btn-secundario">
+                        Ⅱ Pausar
+                    </button>
+
+                    <button id="reiniciar" class="btn-reiniciar">
+                        ↻ Reiniciar
+                    </button>
+
+                </div>
+
+                <div class="control-velocidad">
+                    <label for="velocidadSimulacion">VELOCIDAD DE SIMULACIÓN</label>
+
+                    <select id="velocidadSimulacion">
+                        <option value="0.5">0.5x - Lenta</option>
+                        <option value="1" selected>1x - Normal</option>
+                        <option value="2">2x - Rápida</option>
+                        <option value="4">4x - Muy rápida</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <!-- CONFIGURACIÓN -->
+            <div class="panel configuracion">
+
+                <div class="panel-titulo">
+                    <div>
+                        <span class="etiqueta">PARÁMETROS</span>
+                        <h2>Configuración</h2>
+                    </div>
+                    <span class="icono-config">⚙</span>
+                </div>
+
+                <div class="campo">
+                    <label for="masa">Masa del objeto</label>
+                    <div class="input-unidad">
+                        <input type="number" id="masa" value="2" min="0.1" step="0.1">
+                        <span>kg</span>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="altura">Altura inicial</label>
+                    <div class="input-unidad">
+                        <input type="number" id="altura" value="20" min="1" step="1">
+                        <span>m</span>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="gravedad">Gravedad</label>
+                    <div class="input-unidad">
+                        <input type="number" id="gravedad" value="9.8" min="0.1" step="0.1">
+                        <span>m/s²</span>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="friccion">Resistencia del aire</label>
+                    <div class="rango-contenedor">
+                        <input type="range" id="friccion" min="0" max="100" value="0">
+                        <span id="valorFriccion">0%</span>
+                    </div>
+                </div>
+
+                <div class="nota-config">
+                    <span>ⓘ</span>
+                    <p>Modifica los parámetros para observar cómo cambian los resultados del experimento.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ENERGÍAS -->
+        <section class="seccion" id="energias">
+
+            <div class="seccion-titulo">
+                <div>
+                    <span class="etiqueta">ANÁLISIS ENERGÉTICO</span>
+                    <h2>Balance de energías</h2>
+                </div>
+                <span class="unidad">Unidad: Joules (J)</span>
+            </div>
+
+            <div class="energias-grid">
+
+                <article class="energia energia-ep">
+                    <div class="energia-icono">↗</div>
+                    <span>ENERGÍA POTENCIAL</span>
+                    <h2 id="ep">392.00 J</h2>
+                    <p>Ep = m × g × h</p>
+                </article>
+
+                <article class="energia energia-ec">
+                    <div class="energia-icono">ϟ</div>
+                    <span>ENERGÍA CINÉTICA</span>
+                    <h2 id="ec">0.00 J</h2>
+                    <p>Ec = ½ × m × v²</p>
+                </article>
+
+                <article class="energia energia-em">
+                    <div class="energia-icono">◈</div>
+                    <span>ENERGÍA MECÁNICA</span>
+                    <h2 id="em">392.00 J</h2>
+                    <p>Em = Ep + Ec</p>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- GRÁFICAS -->
+        <section class="panel grafica-panel" id="graficas">
+
+            <div class="panel-titulo">
+                <div>
+                    <span class="etiqueta">REPRESENTACIÓN VISUAL</span>
+                    <h2>Evolución de las energías</h2>
+                </div>
+                <span class="unidad">J / s</span>
+            </div>
+
+            <div class="leyenda">
+                <span><i class="color-ep"></i> Potencial</span>
+                <span><i class="color-ec"></i> Cinética</span>
+                <span><i class="color-em"></i> Mecánica</span>
+            </div>
+
+            <div class="canvas-contenedor">
+                <canvas id="grafica" width="1000" height="350"></canvas>
+            </div>
+
+        </section>
+
+        <!-- TABLA DE DATOS -->
+        <section class="panel datos-panel" id="datos">
+
+            <div class="panel-titulo">
+                <div>
+                    <span class="etiqueta">REGISTRO EXPERIMENTAL</span>
+                    <h2>Tabla de mediciones</h2>
+                </div>
+
+                <span class="unidad">Datos del experimento</span>
+            </div>
+
+            <div class="tabla-contenedor">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tiempo (s)</th>
+                            <th>Altura (m)</th>
+                            <th>Velocidad (m/s)</th>
+                            <th>Potencial (J)</th>
+                            <th>Cinética (J)</th>
+                            <th>Mecánica (J)</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tabla">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- RESULTADOS -->
+        <section class="panel resultados-panel" id="resultados">
+
+            <div class="panel-titulo">
+                <div>
+                    <span class="etiqueta">INFORME FINAL</span>
+                    <h2>Resultados del experimento</h2>
+                </div>
+                <span class="icono-resultado">✧</span>
+            </div>
+
+            <div class="resultados-grid">
+
+                <div class="resultado">
+                    <span>TIEMPO DE CAÍDA</span>
+                    <h2 id="tiempoFinal">0.00 s</h2>
+                </div>
+
+                <div class="resultado">
+                    <span>VELOCIDAD FINAL</span>
+                    <h2 id="velocidadFinal">0.00 m/s</h2>
+                </div>
+
+                <div class="resultado">
+                    <span>DISTANCIA RECORRIDA</span>
+                    <h2 id="distancia">0.00 m</h2>
+                </div>
+
+            </div>
+
+            <div class="conclusion">
+                <span>CONCLUSIÓN DEL EXPERIMENTO</span>
+                <p id="conclusion">
+                    Configura los parámetros e inicia la simulación para obtener los resultados.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- PIE DE PÁGINA -->
+        <footer>
+            <p>Simulador de Caída Libre © 2026</p>
+            <span>Explorando las leyes del movimiento y la energía.</span>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
